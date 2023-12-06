@@ -32,12 +32,12 @@ namespace Schusterin
 			currentTime = newTime;
 			accumulator += frameTime;
 
-			while (accumulator >= dt)
+			while (accumulator <= dt)
 			{
 				this->_data->machine.GetActiveState( )->HandleInput( );
 				this->_data->machine.GetActiveState( )->Update(dt);
 
-				accumulator -= dt;
+				accumulator += dt;
 			}
 			
 			interpolation = accumulator / dt;
